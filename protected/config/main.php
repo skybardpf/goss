@@ -12,6 +12,8 @@ return array(
 	'name'=>'Гос. услуги',
     'language' => 'ru',
 
+    'defaultController' => 'supplier/',
+
 	// preloading 'log' component
     'preload'=>array('log', 'bootstrap'),
 
@@ -22,8 +24,8 @@ return array(
 	),
 
 	'modules'=>array(
-        'test' => array(
-            'defaultController' => 'aga'
+        'supplier' => array(
+            'defaultController' => 'ticket'
         ),
 		// uncomment the following to enable the Gii tool
 		/*

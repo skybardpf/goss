@@ -17,11 +17,13 @@ class TicketController extends Controller
 	public function actions()
 	{
 		return array(
-			'add' => 'application.controllers.Ticket.AddAction',
-			'view' => 'application.controllers.Ticket.ViewAction',
-			'_get_consumer_data' => 'application.controllers.Ticket.GetConsumerDataAction',
-			'archive' => 'application.controllers.Ticket.ArchiveAction',
-		);
+			'index' => 'application.modules.supplier.controllers.Ticket.IndexAction',
+			'add' => 'application.modules.supplier.controllers.Ticket.AddAction',
+			'view' => 'application.modules.supplier.controllers.Ticket.ViewAction',
+			'archive' => 'application.modules.supplier.controllers.Ticket.ArchiveAction',
+
+            '_get_consumer_data' => 'application.modules.Supplier.controllers.Ticket.GetConsumerDataAction',
+        );
 	}
 
     public function filters()

@@ -2,14 +2,14 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
- * @var TicketController $this
- * @var Ticket $ticket
+ * @var TicketController    $this
+ * @var Ticket              $ticket
  */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Заявки на сегодня' => $this->createUrl('supplier/'),
+    'Заявки на сегодня' => $this->createUrl('/supplier'),
     'Создать тикет' => $this->createUrl('add'),
     'Архив заявок' => $this->createUrl('archive'),
     'Просмотр заявки'

@@ -4,7 +4,7 @@
  * User: Skibardin A.A.
  * Date: 15.08.13
  */
-class TestModule extends CWebModule
+class SupplierModule extends CWebModule
 {
 //    public $assets = '';
     public function init()

@@ -6,8 +6,6 @@
 class IndexAction extends CAction
 {
     public function run(){
-
-
         $crt = new CDbCriteria;
         $crt->with = array(
             'supplier',

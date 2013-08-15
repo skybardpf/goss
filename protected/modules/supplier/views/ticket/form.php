@@ -2,16 +2,16 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
- * @var TicketController $this
- * @var Ticket $ticket
- * @var Consumer $consumer
- * @var IdentityDocument $document
+ * @var TicketController    $this
+ * @var Ticket              $ticket
+ * @var Consumer            $consumer
+ * @var IdentityDocument    $document
  */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Заявки на сегодня' => $this->createUrl('supplier/'),
+    'Заявки на сегодня' => $this->createUrl('/supplier'),
     'Архив заявок' => $this->createUrl('archive'),
     'Создать тикет'
 );

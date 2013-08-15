@@ -2,9 +2,14 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
- * @var SupplierController $this
- * @var Ticket[] $data
+ * @var TicketController    $this
+ * @var Ticket[]            $data
  */
+?>
+<?php
+$this->breadcrumbs = array(
+    'Заявки на сегодня'
+);
 ?>
     <h2>Заявки на сегодня</h2>
 <?php
@@ -12,14 +17,14 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=> 'success',
     'type'      => 'normal',
     'label'     => 'Создать новый тикет',
-    'url' => $this->createUrl('/ticket/add')
+    'url' => $this->createUrl('add')
 ));
 echo '&nbsp;&nbsp;';
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=> 'success',
     'type'      => 'normal',
     'label'     => 'Архив заявок',
-    'url' => $this->createUrl('/ticket/archive')
+    'url' => $this->createUrl('archive')
 ));
 
 $this->widget('bootstrap.widgets.TbGridView', array(
