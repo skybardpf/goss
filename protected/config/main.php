@@ -32,17 +32,15 @@ return array(
 		),
 		*/
         'modules'=>array(
-            'gii' => array(
+            'gii'=>array(
                 'generatorPaths'=>array(
                     'bootstrap.gii',
                 ),
-                'class'=>'system.gii.GiiModule',
-                'password'=>'1',
-                // If removed, Gii defaults to localhost only. Edit carefully to taste.
-                'ipFilters'=>array('127.0.0.1','::1', '192.168.0.*'),
             ),
         ),
 	),
+
+//    'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
 
 	// application components
 	'components'=>array(
@@ -52,25 +50,26 @@ return array(
 		),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+            'showScriptName' => false
 //			'rules'=>array(
 //				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 //				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 //				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 //			),
 		),
-		'db'=>array(
+		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/data.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
-		/*
+
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=gosuslugi',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => '123456',
 			'charset' => 'utf8',
 		),
-		*/
+
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
         ),

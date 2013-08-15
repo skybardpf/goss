@@ -24,13 +24,13 @@ class Region extends CActiveRecord
         return 'supplier';
     }
 
-//    /**
-//     * @return array
-//     */
-//    public function relations()
-//    {
-//        return array(
-//            'tickets' => array(self::MANY_MANY, 'Ticket', 'consumer_id')
-//        );
-//    }
+    /**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'organizations' => array(self::HAS_MANY, 'Organization', 'organization_id'),
+        );
+    }
 }

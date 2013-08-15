@@ -23,4 +23,15 @@ class Organization extends CActiveRecord
     {
         return 'organization';
     }
+
+    /**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'suppliers' => array(self::HAS_MANY, 'Supplier', 'organization_id'),
+            'region' => array(self::BELONGS_TO, 'Region', 'organization_id'),
+        );
+    }
 }

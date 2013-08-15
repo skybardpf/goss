@@ -10,10 +10,12 @@ class Supplier extends CActiveRecord
     public $patronymic;
     public $organization_id;
 
+    public $login;
+    public $password;
 
     /**
      * @param string $className
-     * @return Region
+     * @return Supplier
      */
     public static function model($className=__CLASS__)
     {
@@ -25,6 +27,16 @@ class Supplier extends CActiveRecord
      */
     public function tableName()
     {
-        return 'region';
+        return 'supplier';
+    }
+
+    /**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'organization' => array(self::BELONGS_TO, 'Organization', 'organization_id')
+        );
     }
 }

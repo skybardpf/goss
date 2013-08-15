@@ -2,32 +2,42 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
- * @var FindTicketForm $model
+ * @var SupplierController $this
+ * @var Ticket[] $data
  */
-
-/**
- * @var TbActiveForm $form
- */
-$form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-    'id' => 'form-find-ticket',
-    'type' => 'horizontal',
-    'enableAjaxValidation' => true,
-    'clientOptions' => array(
-        'validateOnChange' => true,
-    ),
-));
-
-if ($model->hasErrors()) {
-    echo '<br/><br/>'. $form->errorSummary($model);
-}
-
-echo $form->textFieldRow($model, 'ticket_number');
-echo $form->textFieldRow($model, 'mobile');
 
 $this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=> 'submit',
-    'type'      => 'primary',
-    'label'     => 'Найти'
+    'buttonType'=> 'success',
+    'type'      => 'normal',
+    'label'     => 'Создать новый тикет',
+    'url' => $this->createUrl('/ticket/add')
+));
+echo '&nbsp;&nbsp;';
+$this->widget('bootstrap.widgets.TbButton', array(
+    'buttonType'=> 'success',
+    'type'      => 'normal',
+    'label'     => 'Архив заявок',
+    'url' => $this->createUrl('/ticket/archive')
 ));
 
-$this->endWidget();
+$this->widget('bootstrap.widgets.TbGridView', array(
+    'type' => 'striped bordered condensed',
+    'dataProvider' => new CArrayDataProvider($data),
+    'template' => "{items} {pager}",
+    'columns' => array(
+        array(
+            'name' => 'number',
+            'header' => 'Тикет',
+            'type' => 'raw',
+            'value' => 'CHtml::link($data["number"], Yii::app()->getController()->createUrl("ticket/view", array("id" => $data["number"])))'
+        ),
+        array(
+            'name' => 'consumer_id',
+            'header' => 'Потребитель'
+        ),
+        array(
+            'name' => 'service_id',
+            'header' => 'Услуга'
+        ),
+    ),
+));

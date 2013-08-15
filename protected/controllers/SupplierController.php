@@ -1,6 +1,6 @@
 <?php
 /**
- * Потребитель.
+ * Поставщик гос. услуг.
  * 1. Поиск тикета
  * 2. Просмотр тикета
  *
@@ -15,7 +15,28 @@ class SupplierController extends Controller
 	{
 		return array(
 			'index' => 'application.controllers.Supplier.IndexAction',
-			'ticket' => 'application.controllers.Supplier.TicketAction',
+//			'ticket' => 'application.controllers.Supplier.TicketAction',
 		);
 	}
+
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'actions'=>array('index'),
+                'users'=>array('@'),
+            ),
+            array('deny',
+//                'actions'=>array('delete'),
+                'users'=>array('*'),
+            ),
+        );
+    }
 }

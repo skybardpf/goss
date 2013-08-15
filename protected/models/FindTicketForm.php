@@ -47,7 +47,7 @@ class FindTicketForm extends CFormModel
                 ':mobile' => $this->mobile,
             )
         );
-        var_dump($ticket);die;
+//        var_dump($ticket);die;
         return $ticket;
 	}
 }

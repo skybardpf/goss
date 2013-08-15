@@ -10,7 +10,7 @@ class Ticket extends CActiveRecord
     public $consumer_id;
     public $supplier_id;
     public $organization_id;
-    public $region_id;
+    public $service_id;
 
     /**
      * @param string $className
@@ -36,6 +36,19 @@ class Ticket extends CActiveRecord
     {
         return array(
             'consumers' => array(self::MANY_MANY, 'Consumer', 'consumer_id')
+        );
+    }
+
+    /**
+     * Declares attribute labels.
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'consumer_id' => 'Потребитель',
+            'region_id' => 'Регион',
+            'supplier_id' => 'Поставщик',
+            'service_id' => 'Услуга',
         );
     }
 }
