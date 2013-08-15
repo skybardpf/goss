@@ -2,31 +2,29 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
- * @var SupplierController $this
+ * @var TicketController $this
  * @var Ticket[] $data
  */
 ?>
-    <h2>Заявки на сегодня</h2>
-<?php
-$this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=> 'success',
-    'type'      => 'normal',
-    'label'     => 'Создать новый тикет',
-    'url' => $this->createUrl('/ticket/add')
-));
-echo '&nbsp;&nbsp;';
-$this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=> 'success',
-    'type'      => 'normal',
-    'label'     => 'Архив заявок',
-    'url' => $this->createUrl('/ticket/archive')
-));
 
+<?php
+$this->breadcrumbs = array(
+    'Заявки на сегодня' => $this->createUrl('supplier/'),
+    'Создать тикет' => $this->createUrl('add'),
+    'Архив заявок'
+);
+?>
+    <h2>Архив заявок</h2>
+<?php
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type' => 'striped bordered condensed',
     'dataProvider' => new CArrayDataProvider($data),
     'template' => "{items} {pager}",
     'columns' => array(
+        array(
+            'name' => 'created',
+            'header' => 'Создано'
+        ),
         array(
             'name' => 'number',
             'header' => 'Тикет',

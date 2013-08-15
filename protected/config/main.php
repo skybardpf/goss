@@ -68,6 +68,7 @@ return array(
 			'username' => 'root',
 			'password' => '123456',
 			'charset' => 'utf8',
+            'enableProfiling'=>true,
 		),
 
         'bootstrap'=>array(
@@ -79,11 +80,16 @@ return array(
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',
+            'enabled'=>YII_DEBUG,
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
+                array(
+                    'class'=>'application.extensions.yii-debug-toolbar.YiiDebugToolbarRoute',
+                    'ipFilters'=>array('127.0.0.1'),
+                ),
 				// uncomment the following to show log messages on web pages
 				/*
 				array(

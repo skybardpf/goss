@@ -19,7 +19,14 @@ $this->widget('ext.LoadingWidget.LoadingWidget');
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+<!--		<div id="logo">--><?php //echo CHtml::encode(Yii::app()->name); ?><!--</div>-->
+    <?php
+        if(isset($this->breadcrumbs)) {
+            $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                'links'=>$this->breadcrumbs,
+            ));
+        }
+    ?>
 	</div><!-- header -->
 
 	<?php echo $content; ?>

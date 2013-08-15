@@ -2,6 +2,9 @@
 /**
  * Модель: Заявка-тикет на выполнение гос. услуги.
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
+ *
+ * @property Supplier $supplier
+ * @property Service $service
  */
 class Ticket extends CActiveRecord
 {
@@ -13,6 +16,8 @@ class Ticket extends CActiveRecord
     public $region_id;
     public $document_id;
     public $service_id;
+
+//    public $supplier_name;
 
     /**
      * @return array
@@ -50,7 +55,9 @@ class Ticket extends CActiveRecord
     public function relations()
     {
         return array(
-            'consumers' => array(self::MANY_MANY, 'Consumer', 'consumer_id')
+//            'consumers' => array(self::MANY_MANY, 'Consumer', 'consumer_id'),
+            'supplier' => array(self::BELONGS_TO, 'Supplier', 'supplier_id'),
+            'service' => array(self::BELONGS_TO, 'Service', 'service_id'),
         );
     }
 
@@ -76,5 +83,13 @@ class Ticket extends CActiveRecord
             array('service_id', 'required', 'message' => 'Выберите услугу'),
             array('service_id', 'in', 'range' => array_keys(CHtml::listData(Service::model()->findAll(), 'id' , 'name')), 'message' => 'Выберите услугу из списка'),
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function getSupplierFIO()
+    {
+        return $this->supplier->surname.' '.$this->supplier->name.' '.$this->supplier->patronymic;
     }
 }

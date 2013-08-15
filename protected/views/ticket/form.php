@@ -8,9 +8,18 @@
  * @var IdentityDocument $document
  */
 ?>
-<h2>Создание нового тикета</h2>
+
 <?php
-Yii::app()->clientScript->registerScriptFile($this->baseAssets.'/js/ticket/form.js');
+$this->breadcrumbs = array(
+    'Заявки на сегодня' => $this->createUrl('supplier/'),
+    'Архив заявок' => $this->createUrl('archive'),
+    'Создать тикет'
+);
+?>
+
+    <h2>Создание нового тикета</h2>
+<?php
+Yii::app()->clientScript->registerScriptFile($this->baseAssets . '/js/ticket/form.js');
 
 /**
  * @var TbActiveForm $form
@@ -48,9 +57,9 @@ echo $form->textFieldRow($consumer, 'patronymic');
 echo $form->textFieldRow($consumer, 'mobile');
 
 $this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=> 'submit',
-    'type'      => 'primary',
-    'label'     => 'Сохранить'
+    'buttonType' => 'submit',
+    'type' => 'primary',
+    'label' => 'Сохранить'
 ));
 
 $this->endWidget();
