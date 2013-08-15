@@ -5,6 +5,8 @@
  */
 class OrganizationController extends Controller
 {
+    public $layout = 'admin';
+
     /**
      * @return array action filters
      */

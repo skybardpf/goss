@@ -4,4 +4,5 @@
  * Date: 15.08.13
  */
 class AdminModule extends CWebModule {
+//    public $layout = '/layouts/admin';
 }

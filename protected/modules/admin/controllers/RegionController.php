@@ -5,6 +5,8 @@
  */
 class RegionController extends Controller
 {
+    public $layout = 'admin';
+
     /**
      * @return array action filters
      */

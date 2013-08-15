@@ -5,6 +5,8 @@
  */
 class CatalogController extends Controller
 {
+    public $layout = 'admin';
+
 	/**
 	 * Lists all models.
 	 */
