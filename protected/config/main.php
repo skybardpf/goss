@@ -43,7 +43,9 @@ return array(
                 'bootstrap.gii',
 			),
 		),
-        'admin',
+        'admin' => array(
+            'defaultController' => 'catalog'
+        ),
 	),
 
 //    'theme'=>'bootstrap', // requires you to copy the theme under your themes directory

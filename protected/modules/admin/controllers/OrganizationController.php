@@ -24,11 +24,11 @@ class OrganizationController extends Controller
     {
         return array(
             array('allow', // allow authenticated users to perform any action
-                'users'=>array('@'),
-            ),
-            array('deny',  // deny all users
                 'users'=>array('*'),
             ),
+//            array('deny',  // deny all users
+//                'users'=>array('*'),
+//            ),
         );
     }
 
