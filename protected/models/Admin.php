@@ -1,16 +1,16 @@
 <?php
 /**
- * Модель: Услуга. Гос. услуга населению.
- * @author Skibardin Andrey <skybardpf@artektiv.ru>
+ * Модель: админы
+ * @author Burtsev Roman <roman@artektiv.ru>
  */
-class Service extends CActiveRecord
+class Admin extends CActiveRecord
 {
-    public $name;
-    public $organization_id;
+    public $login;
+    public $password;
 
     /**
      * @param string $className
-     * @return Service
+     * @return Region
      */
     public static function model($className=__CLASS__)
     {
@@ -22,7 +22,7 @@ class Service extends CActiveRecord
      */
     public function tableName()
     {
-        return 'service';
+        return 'admin';
     }
 
     /**
@@ -33,8 +33,7 @@ class Service extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('name', 'required'),
-            array('name', 'length', 'max'=>150),
+            array('login, password', 'required'),
         );
     }
 
@@ -44,7 +43,21 @@ class Service extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'name' => 'Название',
+            'login'           => 'Логин',
+            'password'        => 'Пароль',
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function getAdmins()
+    {
+        $dbQuery = $this->findAll();
+        $items = array();
+        foreach($dbQuery as $item) {
+            $items[$item->login] = $item->password;
+        }
+        return $items;
     }
 }

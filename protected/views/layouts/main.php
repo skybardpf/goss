@@ -12,16 +12,28 @@ Yii::app()->bootstrap->registerCoreCss();
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
+<style type="text/css">
+ul#yw0 li, ul#yw2 li{
+    display: inline-block;
+    margin-right: 20px;
+}
+</style>
 <body>
 
 <div class="container" id="page">
-
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<?php echo $content; ?>
+    <?php $this->widget('zii.widgets.CMenu',array(
+        'items'=>array(
+            array('label'=>'Авторизация', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+            array('label'=>'Выход', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+            array('label'=>'Главная', 'url'=>array('/site/index')),
+            array('label'=>'Справочники', 'url'=>array('/site/catalogs'), 'visible'=>!Yii::app()->user->isGuest),
+        ),
+    )); ?>
+    <?php echo $content; ?>
 
 	<div class="clear"></div>
 

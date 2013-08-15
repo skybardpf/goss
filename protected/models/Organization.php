@@ -23,4 +23,27 @@ class Organization extends CActiveRecord
     {
         return 'organization';
     }
+
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('name', 'required'),
+            array('name', 'length', 'max'=>150),
+        );
+    }
+
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'name' => 'Название',
+        );
+    }
 }

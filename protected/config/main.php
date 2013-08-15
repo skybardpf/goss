@@ -29,19 +29,17 @@ return array(
 			'password'=>'Enter Your Password Here',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-		*/
-        'modules'=>array(
-            'gii' => array(
-                'generatorPaths'=>array(
-                    'bootstrap.gii',
-                ),
-                'class'=>'system.gii.GiiModule',
-                'password'=>'1',
-                // If removed, Gii defaults to localhost only. Edit carefully to taste.
-                'ipFilters'=>array('127.0.0.1','::1', '192.168.0.*'),
+		),*/
+        'gii' => array(
+            'generatorPaths'=>array(
+                'bootstrap.gii',
             ),
+            'class'=>'system.gii.GiiModule',
+            'password'=>'1',
+            // If removed, Gii defaults to localhost only. Edit carefully to taste.
+            'ipFilters'=>array('127.0.0.1','::1', '192.168.0.*'),
         ),
+        'admin',
 	),
 
 	// application components
@@ -52,17 +50,18 @@ return array(
 		),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-//			'rules'=>array(
-//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-//			),
+            'showScriptName' => false,
+			'rules'=>array(
+                //'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				//'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+				//'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+			),
 		),
-		'db'=>array(
+		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/data.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
-		/*
+
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
 			'emulatePrepare' => true,
@@ -70,7 +69,6 @@ return array(
 			'password' => '',
 			'charset' => 'utf8',
 		),
-		*/
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
         ),

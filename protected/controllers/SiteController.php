@@ -32,6 +32,16 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+    public function actionCatalogs()
+    {
+        $this->render('catalogs', array(
+            'regionsCount'      => Region::model()->count(),
+            'organizationsCount' => Organization::model()->count(),
+            'servicesCount'      => Service::model()->count(),
+            'suppliersCount'     => Supplier::model()->count(),
+        ));
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -95,7 +105,7 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('login', array('model'=>$model));
 	}
 
 	/**

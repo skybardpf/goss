@@ -1,16 +1,15 @@
 <?php
 /**
- * Модель: Услуга. Гос. услуга населению.
- * @author Skibardin Andrey <skybardpf@artektiv.ru>
+ * Модель: Роль поставщика
+ * @author Burtsev Roman <roman@artektiv.ru>
  */
-class Service extends CActiveRecord
+class SupplierRole extends CActiveRecord
 {
     public $name;
-    public $organization_id;
 
     /**
      * @param string $className
-     * @return Service
+     * @return SupplierRole
      */
     public static function model($className=__CLASS__)
     {
@@ -22,7 +21,7 @@ class Service extends CActiveRecord
      */
     public function tableName()
     {
-        return 'service';
+        return 'supplier_role';
     }
 
     /**
@@ -44,7 +43,7 @@ class Service extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'name' => 'Название',
+            'name' => 'Название роли',
         );
     }
 }
