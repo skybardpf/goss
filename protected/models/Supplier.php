@@ -40,4 +40,12 @@ class Supplier extends CActiveRecord
             'organization' => array(self::BELONGS_TO, 'Organization', 'organization_id')
         );
     }
+
+    /**
+     * @return string
+     */
+    public function getFIO()
+    {
+        return $this->surname.' '.$this->name.' '.$this->patronymic;
+    }
 }

@@ -22,6 +22,9 @@ return array(
 	),
 
 	'modules'=>array(
+        'test' => array(
+            'defaultController' => 'aga'
+        ),
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(

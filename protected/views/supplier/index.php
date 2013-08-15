@@ -31,12 +31,12 @@ $this->widget('bootstrap.widgets.TbGridView', array(
             'name' => 'number',
             'header' => 'Тикет',
             'type' => 'raw',
-            'value' => 'CHtml::link($data["number"], Yii::app()->getController()->createUrl("ticket/view", array("id" => $data["number"])))'
+            'value' => 'CHtml::link($data["number"], Yii::app()->getController()->createUrl("ticket/view", array("id" => $data["id"])))'
         ),
         array(
             'name' => 'supplier',
             'header' => 'Потребитель',
-            'value' => '$data->getSupplierFIO();'
+            'value' => '$data->consumer->getFIO();'
         ),
         array(
             'name' => 'service.name',

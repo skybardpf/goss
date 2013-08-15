@@ -63,4 +63,12 @@ class Consumer extends CActiveRecord
             array('mobile', 'length', 'max' => 20),
         );
     }
+
+    /**
+     * @return string
+     */
+    public function getFIO()
+    {
+        return $this->surname.' '.$this->name.' '.$this->patronymic;
+    }
 }

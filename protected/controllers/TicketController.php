@@ -18,6 +18,7 @@ class TicketController extends Controller
 	{
 		return array(
 			'add' => 'application.controllers.Ticket.AddAction',
+			'view' => 'application.controllers.Ticket.ViewAction',
 			'_get_consumer_data' => 'application.controllers.Ticket.GetConsumerDataAction',
 			'archive' => 'application.controllers.Ticket.ArchiveAction',
 		);
