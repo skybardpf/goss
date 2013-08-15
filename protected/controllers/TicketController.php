@@ -1,5 +1,10 @@
 <?php
 /**
+ * Class TicketException
+ */
+class TicketException extends CException{};
+
+/**
  * Управление заявками на выполнение гос. услуги.
  *
  * Class TicketController
@@ -13,6 +18,7 @@ class TicketController extends Controller
 	{
 		return array(
 			'add' => 'application.controllers.Ticket.AddAction',
+			'_get_consumer_data' => 'application.controllers.Ticket.GetConsumerDataAction',
 			'archive' => 'application.controllers.Ticket.ArchiveAction',
 		);
 	}
@@ -28,7 +34,7 @@ class TicketController extends Controller
     {
         return array(
             array('allow',
-                'actions'=>array('add', 'archive'),
+//                'actions'=>array('add', 'archive'),
                 'users'=>array('@'),
             ),
             array('deny',

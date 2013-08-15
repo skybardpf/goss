@@ -9,28 +9,65 @@ class AddAction extends CAction
 
         $ticket = new Ticket();
         $ticket->organization_id = Yii::app()->user->organization_id;
+        $ticket->region_id = Yii::app()->user->region_id;
+        $ticket->supplier_id = Yii::app()->user->getId();
+
         $consumer = new Consumer();
+        $document = new IdentityDocument();
+
+        if(isset($_POST['ajax']) && $_POST['ajax'] === 'form-ticket') {
+            echo CActiveForm::validate(
+                array($ticket, $consumer, $document)
+            );
+            Yii::app()->end();
+        }
 
         $class = get_class($ticket);
         $class_consumer = get_class($consumer);
-        if (isset($_POST[$class]) && isset($class_consumer)) {
-            $ticket->setAttributes($_POST[$class]);
-            $consumer->setAttributes($_POST[$class_consumer]);
+        $class_document = get_class($document);
+        if (isset($_POST[$class]) && isset($class_consumer) && isset($class_document)) {
+            try {
+                $ticket->setAttributes($_POST[$class]);
 
-            if ($consumer->validate() && $consumer->save()) {
-                $ticket->consumer_id = $consumer->primaryKey;
-                $ticket->supplier_id = Yii::app()->user->getId();
+                if ($ticket->validate()){
+                    $document->setAttributes($_POST[$class_document]);
+                    if ($document->validate()){
+                        $valid = true;
+                        /**
+                         * @var IdentityDocument $exists_doc
+                         */
+                        $exists_doc = IdentityDocument::model()->findByAttributes(array(
+                            'type_id' => $document->type_id,
+                            'number' => $document->number
+                        ));
 
-                if ($ticket->validate()) {
-                    try {
-                        $ticket->save();
-                        $this->controller->redirect(
-                            $this->controller->createUrl('supplier/')
-                        );
-                    } catch (CException $e) {
-                        $ticket->addError('id', $e->getMessage());
+                        if ($exists_doc === null){
+                            $consumer->setAttributes($_POST[$class_consumer]);
+                            if ($valid = $consumer->validate()){
+                                $consumer->save();
+                                $document->consumer_id = $consumer->primaryKey;
+                                $document->save();
+                            }
+                            $ticket->consumer_id = $document->consumer_id;
+                            $ticket->document_id = $document->primaryKey;
+                        } else {
+                            $ticket->consumer_id = $exists_doc->consumer_id;
+                            $ticket->document_id = $exists_doc->primaryKey;
+                        }
+
+                        if ($valid){
+                            $ticket->created = time();
+                            $ticket->number = 'NUmber'.time(); // TODO генерировать правильный
+                            $ticket->save();
+
+                            $this->controller->redirect(
+                                $this->controller->createUrl('supplier/')
+                            );
+                        }
                     }
                 }
+            } catch (CException $e) {
+                $ticket->addError('id', $e->getMessage());
             }
         }
         $this->controller->render(
@@ -38,6 +75,7 @@ class AddAction extends CAction
             array(
                 'ticket' => $ticket,
                 'consumer' => $consumer,
+                'document' => $document,
             )
         );
     }

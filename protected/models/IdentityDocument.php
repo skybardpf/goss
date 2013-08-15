@@ -2,6 +2,8 @@
 /**
  * Модель: Документ, удостоверяющий личность.
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
+ *
+ * @property Consumer $consumer
  */
 class IdentityDocument extends CActiveRecord
 {
@@ -25,5 +27,41 @@ class IdentityDocument extends CActiveRecord
     public function tableName()
     {
         return 'identity_document';
+    }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'type_id' => 'Тип документа',
+            'number' => 'Номер документа',
+            'other_data' => 'Другие данные',
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'consumer' => array(self::BELONGS_TO, 'Consumer', 'consumer_id')
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function rules()
+    {
+        return array(
+            array('number', 'required'),
+            array('number', 'length', 'max' => 30),
+
+            array('type_id', 'required', 'message' => 'Выберите тип документа из списка'),
+            array('type_id', 'in', 'range' => array_keys(TypeIdentityDocument::model()->findAll())),
+        );
     }
 }

@@ -9,6 +9,7 @@ class Supplier extends CActiveRecord
     public $name;
     public $patronymic;
     public $organization_id;
+    public $region_id;
 
     public $login;
     public $password;

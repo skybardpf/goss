@@ -21,6 +21,9 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
+        /**
+         * @var Supplier $record
+         */
         $record = Supplier::model()->findByAttributes(
             array('login' => $this->username)
         );
@@ -31,9 +34,8 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id = $record->id;
-            $this->_organization_id = $record->organization_id;
             $this->setState('organization_id', $record->organization_id);
-//            $this->_region_id = $record->organization->region->primaryKey;
+            $this->setState('region_id', $record->region_id);
             $this->errorCode = self::ERROR_NONE;
         }
 
