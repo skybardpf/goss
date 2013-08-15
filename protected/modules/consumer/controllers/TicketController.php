@@ -8,6 +8,8 @@
  */
 class TicketController extends Controller
 {
+    public $layout = 'main';
+    
 	/**
 	 * Declares class-based actions.
 	 */
