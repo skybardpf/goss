@@ -27,6 +27,9 @@ return array(
         'supplier' => array(
             'defaultController' => 'ticket'
         ),
+        'consumer' => array(
+            'defaultController' => 'ticket'
+        ),
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(

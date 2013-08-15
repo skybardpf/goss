@@ -28,9 +28,10 @@ class AddAction extends CAction
         if (isset($_POST[$class]) && isset($class_consumer) && isset($class_document)) {
             try {
                 $ticket->setAttributes($_POST[$class]);
+                $document->setAttributes($_POST[$class_document]);
+                $consumer->setAttributes($_POST[$class_consumer]);
 
                 if ($ticket->validate()){
-                    $document->setAttributes($_POST[$class_document]);
                     if ($document->validate()){
                         $valid = true;
                         /**
@@ -42,7 +43,6 @@ class AddAction extends CAction
                         ));
 
                         if ($exists_doc === null){
-                            $consumer->setAttributes($_POST[$class_consumer]);
                             if ($valid = $consumer->validate()){
                                 $consumer->save();
                                 $document->consumer_id = $consumer->primaryKey;
@@ -57,11 +57,11 @@ class AddAction extends CAction
 
                         if ($valid){
                             $ticket->created = time();
-                            $ticket->number = 'NUmber'.time(); // TODO генерировать правильный
+                            $ticket->number = 'Number'.time(); // TODO генерировать правильный
                             $ticket->save();
 
                             $this->controller->redirect(
-                                $this->controller->createUrl('supplier/')
+                                $this->controller->createUrl('/supplier')
                             );
                         }
                     }

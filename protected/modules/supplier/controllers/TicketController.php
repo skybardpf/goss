@@ -22,7 +22,7 @@ class TicketController extends Controller
 			'view' => 'application.modules.supplier.controllers.Ticket.ViewAction',
 			'archive' => 'application.modules.supplier.controllers.Ticket.ArchiveAction',
 
-            '_get_consumer_data' => 'application.modules.Supplier.controllers.Ticket.GetConsumerDataAction',
+            '_get_consumer_data' => 'application.modules.supplier.controllers.Ticket.GetConsumerDataAction',
         );
 	}
 

@@ -19,7 +19,7 @@ $this->breadcrumbs = array(
 
     <h2>Создание нового тикета</h2>
 <?php
-Yii::app()->clientScript->registerScriptFile($this->baseAssets . '/js/ticket/form.js');
+Yii::app()->clientScript->registerScriptFile($this->baseAssets . '/js/supplier/ticket/form.js');
 
 /**
  * @var TbActiveForm $form

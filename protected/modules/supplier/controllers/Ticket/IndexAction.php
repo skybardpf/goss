@@ -19,7 +19,6 @@ class IndexAction extends CAction
         );
 
         $data = Ticket::model()->findAll($crt);
-//        var_dump($data);die;
 
         $this->controller->render(
             'index',

@@ -18,7 +18,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'GET',
             dataType: "json",
-            url: '/ticket/_get_consumer_data/',
+            url: '/supplier/ticket/_get_consumer_data/',
             data: {
                 type: type,
                 number: number
