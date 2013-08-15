@@ -2,9 +2,12 @@
 /**
  * @author Skibardin Andrey <skybardpf@artektiv.ru>
  *
+ * @var TicketController $this
  * @var FindTicketForm $model
  */
-
+?>
+    <h2>Поиск тикета</h2>
+<?php
 /**
  * @var TbActiveForm $form
  */
@@ -18,7 +21,7 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 ));
 
 if ($model->hasErrors()) {
-    echo '<br/><br/>'. $form->errorSummary($model);
+    echo $form->errorSummary($model);
 }
 
 echo $form->textFieldRow($model, 'ticket_number');

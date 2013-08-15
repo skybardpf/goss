@@ -37,17 +37,20 @@ class FindTicketForm extends CFormModel
 	 */
 	public function findTicket()
 	{
-//        var_dump($this->ticket_number);
-//        var_dump($this->mobile);
-//        die;
-		$ticket = Ticket::model()->find(
-            'number=:number AND consumers.mobile=:mobile',
-            array(
-                ':number' => $this->ticket_number,
-                ':mobile' => $this->mobile,
-            )
+        $crt = new CDbCriteria;
+        $crt->with = array(
+            'consumer' => array(
+                'condition' => 'consumer.mobile = :mobile',
+                'params' => array(
+                    ':mobile' => $this->mobile,
+                )
+            ),
         );
-        var_dump($ticket);die;
+        $crt->condition = 'number = :number';
+        $crt->params = array(
+            ':number' => $this->ticket_number,
+        );
+		$ticket = Ticket::model()->find($crt);
         return $ticket;
 	}
 }

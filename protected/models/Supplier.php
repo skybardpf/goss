@@ -9,18 +9,18 @@ class Supplier extends CActiveRecord
     public $name;
     public $patronymic;
     public $organization_id;
+    public $region_id;
+	public $role_id;
 
     public $login;
     public $password;
-    public $region_id;
-    public $role_id;
 
     public $snils;
 
 
     /**
      * @param string $className
-     * @return Region
+     * @return Supplier
      */
     public static function model($className=__CLASS__)
     {
@@ -48,6 +48,16 @@ class Supplier extends CActiveRecord
             array('snils', 'length', 'is'=>6), // TODO: формат поля
             array('organization_id, region_id, role_id', 'numerical', 'integerOnly'=>true),
             array('patronymic', 'default'),
+		);
+	}
+	
+	/**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'organization' => array(self::BELONGS_TO, 'Organization', 'organization_id')
         );
     }
 
@@ -67,5 +77,13 @@ class Supplier extends CActiveRecord
             'role_id'         => 'Роль',
             'snils'           => 'СНИЛС',
         );
+	}
+	
+	/**
+     * @return string
+     */
+    public function getFIO()
+    {
+        return $this->surname.' '.$this->name.' '.$this->patronymic;
     }
 }

@@ -12,6 +12,8 @@ return array(
 	'name'=>'Гос. услуги',
     'language' => 'ru',
 
+    'defaultController' => 'supplier/',
+
 	// preloading 'log' component
     'preload'=>array('log', 'bootstrap'),
 
@@ -22,6 +24,12 @@ return array(
 	),
 
 	'modules'=>array(
+        'supplier' => array(
+            'defaultController' => 'ticket'
+        ),
+        'consumer' => array(
+            'defaultController' => 'ticket'
+        ),
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(
@@ -33,14 +41,12 @@ return array(
         'gii' => array(
             'generatorPaths'=>array(
                 'bootstrap.gii',
-            ),
-            'class'=>'system.gii.GiiModule',
-            'password'=>'1',
-            // If removed, Gii defaults to localhost only. Edit carefully to taste.
-            'ipFilters'=>array('127.0.0.1','::1', '192.168.0.*'),
-        ),
+			),
+		),
         'admin',
 	),
+
+//    'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
 
 	// application components
 	'components'=>array(
@@ -50,12 +56,12 @@ return array(
 		),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-            'showScriptName' => false,
-			'rules'=>array(
-                //'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				//'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				//'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
+            'showScriptName' => false
+//			'rules'=>array(
+//				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+//				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+//			),
 		),
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/data.db',
@@ -63,11 +69,12 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=gosuslugi',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => '123456',
 			'charset' => 'utf8',
+            'enableProfiling'=>true,
 		),
         'bootstrap'=>array(
             'class'=>'bootstrap.components.Bootstrap',
@@ -78,11 +85,16 @@ return array(
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',
+            'enabled'=>YII_DEBUG,
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
+                array(
+                    'class'=>'application.extensions.yii-debug-toolbar.YiiDebugToolbarRoute',
+                    'ipFilters'=>array('127.0.0.1'),
+                ),
 				// uncomment the following to show log messages on web pages
 				/*
 				array(

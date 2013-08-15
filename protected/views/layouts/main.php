@@ -1,7 +1,8 @@
 <?php
 /* @var $this Controller */
 
-Yii::app()->bootstrap->registerCoreCss();
+Yii::app()->bootstrap->register();
+$this->widget('ext.LoadingWidget.LoadingWidget');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22,7 +23,14 @@ ul#yw0 li, ul#yw2 li{
 
 <div class="container" id="page">
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+<!--		<div id="logo">--><?php //echo CHtml::encode(Yii::app()->name); ?><!--</div>-->
+    <?php
+        if(isset($this->breadcrumbs)) {
+            $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                'links'=>$this->breadcrumbs,
+            ));
+        }
+    ?>
 	</div><!-- header -->
 
     <?php $this->widget('zii.widgets.CMenu',array(

@@ -9,7 +9,7 @@ class Region extends CActiveRecord
 
     /**
      * @param string $className
-     * @return Supplier
+     * @return Region
      */
     public static function model($className=__CLASS__)
     {
@@ -21,7 +21,7 @@ class Region extends CActiveRecord
      */
     public function tableName()
     {
-        return 'supplier';
+        return 'region';
     }
 
     /**
@@ -47,13 +47,13 @@ class Region extends CActiveRecord
         );
     }
 
-//    /**
-//     * @return array
-//     */
-//    public function relations()
-//    {
-//        return array(
-//            'tickets' => array(self::MANY_MANY, 'Ticket', 'consumer_id')
-//        );
-//    }
+	/**
+     * @return array
+     */
+    public function relations()
+    {
+        return array(
+            'organizations' => array(self::HAS_MANY, 'Organization', 'organization_id'),
+        );
+    }
 }

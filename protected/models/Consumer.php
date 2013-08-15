@@ -36,4 +36,39 @@ class Consumer extends CActiveRecord
             'tickets' => array(self::MANY_MANY, 'Ticket', 'consumer_id')
         );
     }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'mobile' => 'Мобильный телефон',
+            'surname' => 'Фамилия',
+            'name' => 'Имя',
+            'patronymic' => 'Отчество',
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function rules()
+    {
+        return array(
+            array('surname, name, patronymic', 'required'),
+            array('surname, name, patronymic', 'length', 'max' => 50),
+
+            array('mobile', 'required'),
+            array('mobile', 'length', 'max' => 20),
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function getFIO()
+    {
+        return $this->surname.' '.$this->name.' '.$this->patronymic;
+    }
 }
