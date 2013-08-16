@@ -61,7 +61,7 @@ class Consumer extends CActiveRecord
 
             array('mobile', 'required'),
             array('mobile', 'numerical', 'integerOnly'=>true),
-            array('mobile', 'length', 'max' => 10, 'min'=>10),
+            array('mobile', 'length', 'max' => 11, 'min'=>11),
         );
     }
 
