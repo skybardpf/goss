@@ -23,14 +23,14 @@ ul#yw0 li, ul#yw2 li{
 <div class="container" id="page">
 	<div id="header">
 <!--		<div id="logo">--><?php //echo CHtml::encode(Yii::app()->name); ?><!--</div>-->
-    <?php
-        if(isset($this->breadcrumbs)) {
-            $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-                'links'=>$this->breadcrumbs,
-            ));
-        }
-    ?>
-	</div><!-- header -->
+		<?php
+			if(isset($this->breadcrumbs)) {
+				$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+				));
+			}
+		?>
+		</div><!-- header -->
 
     <?php $this->widget('zii.widgets.CMenu',array(
         'items'=>array(

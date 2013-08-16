@@ -3,13 +3,8 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-
-<table>
-<thead>
-    <th width="300">&nbsp;</th>
-    <th width="400">&nbsp;</th>
-</thead>
-<tbody>
+<h2>Справочники</h2>
+<table class="detail-view table table-striped table-condensed">
     <tr>
         <td><?php echo CHtml::link('Регионы ('.$regionsCount.')', array($this->createUrl('region/index'))); ?></td>
         <td><?php echo CHtml::link('Добавить регион', array($this->createUrl('region/create'))); ?></td>
@@ -26,5 +21,4 @@ $this->pageTitle=Yii::app()->name;
         <td><?php echo CHtml::link('Пользователи ('.$suppliersCount.')', array($this->createUrl('supplier/'))); ?></td>
         <td><?php echo CHtml::link('Добавить пользователя', array($this->createUrl('supplier/create'))); ?></td>
     </tr>
-</tbody>
 </table>
