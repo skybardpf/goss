@@ -60,6 +60,11 @@ class AddAction extends CAction
                             $ticket->number = Ticket::generateNumber();
                             $ticket->save();
 
+                            Yii::app()->curl->get(
+                                'http://epgu.imb2bs.com/sendSms.php?msisdn='.$consumer->mobile.'&order='.$ticket->primaryKey,
+                                array()
+                            );
+
                             $this->controller->redirect(
                                 $this->controller->createUrl('/supplier')
                             );

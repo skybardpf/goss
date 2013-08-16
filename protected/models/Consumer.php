@@ -60,7 +60,8 @@ class Consumer extends CActiveRecord
             array('surname, name, patronymic', 'length', 'max' => 50),
 
             array('mobile', 'required'),
-            array('mobile', 'length', 'max' => 20),
+            array('mobile', 'numerical', 'integerOnly'=>true),
+            array('mobile', 'length', 'max' => 10, 'min'=>10),
         );
     }
 
