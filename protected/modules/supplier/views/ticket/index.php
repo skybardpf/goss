@@ -41,7 +41,6 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         array(
             'name' => 'created',
             'header' => 'Время',
-//            'value' => '$data->consumer->getFIO();'
         ),
         array(
             'name' => 'supplier',
