@@ -61,7 +61,7 @@ class AddAction extends CAction
                             $ticket->save();
 
                             Yii::app()->curl->get(
-                                'http://epgu.imb2bs.com/sendSms.php?msisdn='.$consumer->mobile.'&order='.$ticket->primaryKey,
+                                'http://epgu.imb2bs.com/api/send-new-order-notification/?msisdn='.$consumer->mobile.'&order='.$ticket->primaryKey,
                                 array()
                             );
 
