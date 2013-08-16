@@ -57,8 +57,13 @@ class AddAction extends CAction
 
                         if ($valid){
                             $ticket->created = time();
-                            $ticket->number = 'Number'.time(); // TODO генерировать правильный
+                            $ticket->number = Ticket::generateNumber();
                             $ticket->save();
+
+                            Yii::app()->curl->get(
+                                'http://epgu.imb2bs.com/api/send-new-order-notification/?msisdn='.$consumer->mobile.'&order='.$ticket->primaryKey,
+                                array()
+                            );
 
                             $this->controller->redirect(
                                 $this->controller->createUrl('/supplier')

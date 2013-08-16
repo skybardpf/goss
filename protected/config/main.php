@@ -1,5 +1,4 @@
 <?php
-
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // uncomment the following to define a path alias
@@ -24,7 +23,8 @@ return array(
 	),
 
 	'modules'=>array(
-        'service' => array(),
+        'service',
+        'official',
         'supplier' => array(
             'defaultController' => 'ticket'
         ),
@@ -53,6 +53,11 @@ return array(
 
 	// application components
 	'components'=>array(
+        'curl' => array(
+            'class' => 'ext.Curl',
+            'options' => array()
+        ),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,

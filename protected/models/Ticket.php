@@ -101,4 +101,16 @@ class Ticket extends CActiveRecord
         }
         return $ret;
     }
+
+    /**
+     * @static
+     * @return string
+     */
+    public static function generateNumber(){
+        $ret = '';
+        for($i=0, $l=11; $i<=$l; $i++){
+            $ret .= rand(0,9);
+        }
+        return $ret;
+    }
 }
