@@ -13,7 +13,8 @@ class OrderController extends Controller
 	public function actions()
 	{
 		return array(
-            'create' => 'application.modules.service.controllers.Order.CreateAction'
+            'create' => 'application.modules.service.controllers.Order.CreateAction',
+            'get_status' => 'application.modules.service.controllers.Order.GetStatusAction',
 		);
 	}
 }
