@@ -34,13 +34,23 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'columns' => array(
         array(
             'name' => 'number',
-            'header' => 'Тикет',
+            'header' => 'Номер заявки',
             'type' => 'raw',
             'value' => 'CHtml::link($data["number"], Yii::app()->getController()->createUrl("ticket/view", array("id" => $data["id"])))'
         ),
         array(
+            'name' => 'created',
+            'header' => 'Время',
+//            'value' => '$data->consumer->getFIO();'
+        ),
+        array(
             'name' => 'supplier',
-            'header' => 'Потребитель',
+            'header' => 'Телефон',
+            'value' => '$data->consumer->mobile;'
+        ),
+        array(
+            'name' => 'supplier',
+            'header' => 'ФИО',
             'value' => '$data->consumer->getFIO();'
         ),
         array(

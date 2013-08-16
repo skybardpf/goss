@@ -3,7 +3,7 @@
 
 Yii::app()->bootstrap->register();
 $this->widget('ext.LoadingWidget.LoadingWidget');
-Yii::app()->clientScript->registerCssFile($this->baseAssets.'/css/style.css');
+Yii::app()->clientScript->registerCssFile($this->baseAssets.'/css/styles.css');
 
 ?>
 <!DOCTYPE HTML>
