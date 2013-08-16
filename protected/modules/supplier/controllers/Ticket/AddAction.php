@@ -57,7 +57,7 @@ class AddAction extends CAction
 
                         if ($valid){
                             $ticket->created = time();
-                            $ticket->number = 'Number'.time(); // TODO генерировать правильный
+                            $ticket->number = Ticket::generateNumber();
                             $ticket->save();
 
                             $this->controller->redirect(

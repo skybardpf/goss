@@ -61,9 +61,7 @@ class IdentityDocument extends CActiveRecord
             array('number', 'length', 'max' => 30),
 
             array('type_id', 'required', 'message' => 'Выберите тип документа из списка'),
-            array('type_id', 'in', 'range' => array_keys(CHtml::listData(TypeIdentityDocument::model()->findAll(), 'id', 'name'))),
-
-
+            array('type_id', 'in', 'range' => array_keys(TypeIdentityDocument::model()->findAll())),
         );
     }
 }
