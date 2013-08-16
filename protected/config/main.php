@@ -24,6 +24,7 @@ return array(
 	),
 
 	'modules'=>array(
+        'service' => array(),
         'supplier' => array(
             'defaultController' => 'ticket'
         ),
