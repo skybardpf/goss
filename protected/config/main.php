@@ -54,7 +54,7 @@ return array(
 	// application components
 	'components'=>array(
         'curl' => array(
-            'class' => 'ext.curl.Curl',
+            'class' => 'ext.Curl',
             'options' => array()
         ),
 
