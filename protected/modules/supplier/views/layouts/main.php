@@ -2,8 +2,7 @@
 /* @var $this Controller */
 
 Yii::app()->bootstrap->register();
-Yii::app()->clientScript->registerCssFile($this->baseAssets.'/css/styles.css');
-Yii::app()->clientScript->registerScriptFile($this->baseAssets.'/css/js.js');
+Yii::app()->clientScript->registerCssFile($this->module->baseAssets.'/css/styles.css');
 $this->widget('ext.LoadingWidget.LoadingWidget');
 
 ?>

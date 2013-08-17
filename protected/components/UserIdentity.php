@@ -8,7 +8,7 @@
 class UserIdentity extends CUserIdentity
 {
     private $_id;
-    private $_organization_id;
+//    private $_organization_id;
 //    private $_region_id;
 
 	/**
